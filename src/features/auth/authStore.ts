@@ -19,44 +19,13 @@ export const useAuthStore = create<AuthState>((set) => ({
   isLoading: true,
 
   checkSession: async () => {
-    set({ isLoading: true });
-    try {
-      const response = await fetch('/api/auth/session');
-      const data = await response.json();
-      
-      if (data.authenticated) {
-        set({ 
-          user: data.user, 
-          isAuthenticated: true, 
-          isLoading: false 
-        });
-      } else {
-        set({ 
-          user: null, 
-          isAuthenticated: false, 
-          isLoading: false 
-        });
-      }
-    } catch (error) {
-      console.error('Session sync error:', error);
-      set({ 
-        user: null, 
-        isAuthenticated: false, 
-        isLoading: false 
-      });
-    }
+    // Static hosting mode — no auth backend available.
+    set({ user: null, isAuthenticated: false, isLoading: false });
   },
 
   logout: async () => {
-    try {
-      // In a real BFF, we would call an endpoint to clear the HttpOnly cookie
-      await fetch('/api/auth/logout', { method: 'POST' });
-    } catch (error) {
-      console.error('Logout error:', error);
-    } finally {
-      // Always clear local state
-      set({ user: null, isAuthenticated: false });
-      window.location.href = '/';
-    }
+    // Static hosting mode — clear local state only.
+    set({ user: null, isAuthenticated: false });
+    window.location.href = import.meta.env.BASE_URL;
   },
 }));
