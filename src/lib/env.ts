@@ -21,17 +21,24 @@ const envSchema = z.object({
 export const validateEnv = () => {
   try {
     return envSchema.parse({
-      VITE_SHOPIFY_DOMAIN: import.meta.env.VITE_SHOPIFY_DOMAIN,
-      VITE_SHOPIFY_TOKEN: import.meta.env.VITE_SHOPIFY_TOKEN,
-      VITE_SHOPIFY_CUSTOMER_ACCOUNT_CLIENT_ID: import.meta.env.VITE_SHOPIFY_CUSTOMER_ACCOUNT_CLIENT_ID,
-      VITE_POSTHOG_KEY: import.meta.env.VITE_POSTHOG_KEY,
-      VITE_POSTHOG_HOST: import.meta.env.VITE_POSTHOG_HOST,
-      VITE_SENTRY_DSN: import.meta.env.VITE_SENTRY_DSN,
+      VITE_SHOPIFY_DOMAIN: import.meta.env.VITE_SHOPIFY_DOMAIN || "",
+      VITE_SHOPIFY_TOKEN: import.meta.env.VITE_SHOPIFY_TOKEN || "",
+      VITE_SHOPIFY_CUSTOMER_ACCOUNT_CLIENT_ID: import.meta.env.VITE_SHOPIFY_CUSTOMER_ACCOUNT_CLIENT_ID || "",
+      VITE_POSTHOG_KEY: import.meta.env.VITE_POSTHOG_KEY || "",
+      VITE_POSTHOG_HOST: import.meta.env.VITE_POSTHOG_HOST || "",
+      VITE_SENTRY_DSN: import.meta.env.VITE_SENTRY_DSN || "",
     });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      console.error("❌ Invalid environment variables:", error.flatten().fieldErrors);
-      throw new Error("Invalid environment configuration. Check your .env file.");
+      console.warn("⚠️ Production environment variables not found or incomplete. Booting storefront in mock/offline mode.", error.flatten().fieldErrors);
+      return {
+        VITE_SHOPIFY_DOMAIN: "mock-store.myshopify.com",
+        VITE_SHOPIFY_TOKEN: "mock-token",
+        VITE_SHOPIFY_CUSTOMER_ACCOUNT_CLIENT_ID: "mock-client-id",
+        VITE_POSTHOG_KEY: "",
+        VITE_POSTHOG_HOST: "https://app.posthog.com",
+        VITE_SENTRY_DSN: "",
+      };
     }
   }
 };
