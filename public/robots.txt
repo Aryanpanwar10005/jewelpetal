@@ -1,0 +1,20 @@
+# robots.txt — Generated for JewelPetal
+# AI Crawlers — explicitly allowed for GEO visibility
+User-agent: *
+Allow: /
+
+User-agent: GPTBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Googlebot-Extended
+Allow: /
+
+# Sitemaps
+Sitemap: https://jewelpetal.in/sitemap.xml
+LLMs: https://jewelpetal.in/llms.txt

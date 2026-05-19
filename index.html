@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/png" href="./favicon.png" />
+    <link rel="apple-touch-icon" href="./favicon.png" />
+
+    <!-- Start Single Page Apps for GitHub Pages Routing Fallback -->
+    <script type="text/javascript">
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafgraph/spa-github-pages
+      // Copyright (c) 2016 Rafael Pedicini, licensed under the MIT License
+      // ----------------------------------------------------------------------
+      // This script checks to see if a redirect is present in the query string,
+      // converts it back into the correct url and adds it to the browser's history
+      // using window.history.replaceState() without causing a physical page reload.
+      (function(l) {
+        if (l.search[1] === 'p' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) {
+            return s.replace(/~and~/g, '&')
+          }).reduce(function(r, q) {
+            var p = q.split('=');
+            r[p[0]] = p[1];
+            return r;
+          }, {});
+          if (decoded.p !== undefined) {
+            window.history.replaceState(null, null,
+              l.pathname.slice(0, -1) + (decoded.p || '') +
+              (decoded.q ? ('?' + decoded.q) : '') +
+              l.hash
+            );
+          }
+        }
+      }(window.location));
+    </script>
+    <!-- End Single Page Apps for GitHub Pages Routing Fallback -->
+
+    <!-- SEO -->
+    <title>JewelPetal — Jewelry Gift Bouquets, Made in India</title>
+    <meta name="description" content="Shop premium handcrafted jewelry & fashion accessory gift bouquets at JewelPetal. Hand-styled with earrings, necklaces, hair clips, and beauty accessories. The bouquet she actually keeps — perfect for birthdays, anniversaries, and special moments." />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://jewelpetal.in/" />
+    <meta name="author" content="JewelPetal" />
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="JewelPetal — Jewelry Gift Bouquets, Made in India" />
+    <meta property="og:description" content="Shop premium handcrafted jewelry & fashion accessory gift bouquets at JewelPetal. Hand-styled with earrings, necklaces, hair clips, and beauty accessories. The bouquet she actually keeps." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://jewelpetal.in/" />
+    <meta property="og:image" content="https://jewelpetal.in/og-image.png" />
+    <meta property="og:site_name" content="JewelPetal" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="JewelPetal — Jewelry Gift Bouquets, Made in India" />
+    <meta name="twitter:description" content="Shop premium handcrafted jewelry & fashion accessory gift bouquets at JewelPetal. Hand-styled with earrings, necklaces, hair clips, and beauty accessories." />
+    <meta name="twitter:image" content="https://jewelpetal.in/og-image.png" />
+
+    <!-- Organization Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      "name": "JewelPetal",
+      "url": "https://jewelpetal.in",
+      "logo": "https://jewelpetal.in/logo.webp",
+      "slogan": "The bouquet she actually keeps.",
+      "description": "Shop premium jewelry and fashion accessory gift bouquets at JewelPetal. Arranged to stun, designed to be worn — including earrings, hair clips, necklaces, nail kits, and beauty accessories hand-styled in gift bouquet packaging.",
+      "knowsAbout": "handcrafted jewelry and luxury gift bouquets.",
+      "foundingDate": "2026",
+      "foundingLocation": {
+        "@type": "Place",
+        "name": "India"
+      },
+      "founder": { "@type": "Person", "name": "Nancy Gupta" },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "guptanancy1249@gmail.com",
+        "contactType": "customer service"
+      },
+      "sameAs": ["https://www.instagram.com/jewelpetal.in"]
+    }
+    </script>
+
+    <!-- WebSite Schema -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "JewelPetal",
+      "alternateName": "Jewelry gift bouquets that stun and delight.",
+      "url": "https://jewelpetal.in",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://jewelpetal.in/search?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+  </head>
+
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
