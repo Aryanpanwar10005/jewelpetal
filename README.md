@@ -5,7 +5,8 @@
 JewelPetal is a premium handcrafted gifting brand from India — creating jewelry & fashion accessory gift bouquets that replace temporary flowers with beautiful, wearable keepsakes. Each bouquet is hand-styled with real jewelry, hair accessories, and beauty items, wrapped in premium linen and ribbon.
 
 > 🌐 **Live Site:** [jewelpetal.in](https://jewelpetal.in) *(coming soon)*  
-> 📸 **Instagram:** [@jewelpetal.in](https://www.instagram.com/jewelpetal.in)
+> 📸 **Instagram:** [@jewelpetal.in](https://www.instagram.com/jewelpetal.in)  
+> **Status:** In development. Shopify integration is in progress; without Shopify credentials the storefront runs on built-in mock product data.
 
 ---
 
@@ -36,7 +37,7 @@ All arranged in gift bouquet form — designed to stun on the outside, and be wo
 
 ## 🏗️ Tech Stack
 
-This repository contains the complete **headless storefront** for JewelPetal, built as a modern React SPA.
+This repository contains the **headless storefront** for JewelPetal, built as a React single-page app (SPA).
 
 | Layer | Technology |
 |---|---|
@@ -136,7 +137,7 @@ JewelPetal uses a custom, hand-crafted design system built on Tailwind CSS with 
 
 ```bash
 # Clone the repository
-git clone https://github.com/YOUR_USERNAME/jewelpetal.git
+git clone https://github.com/Aryanpanwar10005/jewelpetal.git
 cd jewelpetal
 
 # Install dependencies
@@ -179,17 +180,17 @@ The workflow in [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml):
 3. Uploads the `/dist` output as a Pages artifact
 4. Deploys it to the live GitHub Pages URL
 
-**SPA Routing Fix:** The `public/404.html` + `index.html` script combo ensures all direct URL navigations (e.g., `/about`, `/product/mini-jewelry-bouquet`) work seamlessly on GitHub Pages' static file server without 404 errors.
+**SPA Routing Fix:** The `public/404.html` + `index.html` script combo ensures all direct URL navigations (e.g., `/about`, `/product/mini-jewelry-bouquet`) work on GitHub Pages' static file server instead of returning a 404.
 
 ---
 
 ## 🔍 SEO & AI Search Optimization
 
-JewelPetal is built with full **GEO (Generative Engine Optimization)** support for visibility in ChatGPT, Perplexity, Google AI Overviews, and other AI-powered search tools:
+The site includes the following for search engines and AI search tools such as ChatGPT, Perplexity and Google AI Overviews (**GEO**, Generative Engine Optimization):
 
 - ✅ **`robots.txt`** — Explicitly allows GPTBot, PerplexityBot, ClaudeBot, and Googlebot
 - ✅ **`llms.txt`** — Machine-readable E-E-A-T document served at site root for LLM parsers
-- ✅ **`sitemap.xml`** — Complete URL map for all 13 pages
+- ✅ **`sitemap.xml`** — URL map of the site's pages for search indexing
 - ✅ **JSON-LD Schema** — `Organization` and `WebSite` structured data injected in `<head>`
 - ✅ **Open Graph + Twitter Cards** — Social sharing metadata on all pages
 - ✅ **React Helmet Async** — Dynamic per-page `<title>` and `<meta>` tags
@@ -198,7 +199,7 @@ JewelPetal is built with full **GEO (Generative Engine Optimization)** support f
 
 ## 📋 Environment Variables
 
-Create a `.env` file in the project root for optional integrations:
+Copy `.env.example` to `.env` in the project root to enable integrations. The main ones:
 
 ```env
 # Contact Form (Formspree)
@@ -207,12 +208,12 @@ VITE_FORMSPREE_ID=your_formspree_form_id
 # PostHog Analytics
 VITE_POSTHOG_KEY=your_posthog_api_key
 
-# Shopify Storefront (if connecting live product catalog)
-VITE_SHOPIFY_STORE_DOMAIN=yourstore.myshopify.com
-VITE_SHOPIFY_STOREFRONT_TOKEN=your_storefront_api_token
+# Shopify Storefront (live product catalog)
+VITE_SHOPIFY_DOMAIN=yourstore.myshopify.com
+VITE_SHOPIFY_TOKEN=your_storefront_api_token
 ```
 
-> **Note:** All environment variables are optional. The storefront runs beautifully with the built-in mock product catalog when these are not set.
+> **Note:** These variables are optional for local development. Without the Shopify variables, the storefront uses the built-in mock product catalog. See `.env.example` for the full list, including Sentry and Shopify customer accounts.
 
 ---
 
